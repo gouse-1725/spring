@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Students List</title>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Students List</h2>
+        <form method="get" action="/filterStudents">
+            <div class="form-row">
+                <div class="col">
+                    <input type="text" class="form-control" name="batchNumber" placeholder="Filter by Batch Number">
+                </div>
+                <div class="col">
+                    <input type="text" class="form-control" name="course" placeholder="Filter by Course">
+                </div>
+                <div class="col">
+                    <button type="submit" class="btn btn-primary">Filter</button>
+                </div>
+                <div class="col">
+                    <a href="/students" class="btn btn-secondary">Reset</a>
+                </div>
+            </div>
+        </form>
+        <br>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Course</th>
+                    <th>Batch Number</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="student : ${students}">
+                    <td th:text="${student.id}"></td>
+                    <td th:text="${student.name}"></td>
+                    <td th:text="${student.course}"></td>
+                    <td th:text="${student.batchNumber}"></td>
+                </tr>
+            </tbody>
+        </table>
+        <br>
+        <a href="/" class="btn btn-primary">Back to Student Entry Form</a>
+    </div>
+</body>
+</html>
